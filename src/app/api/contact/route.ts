@@ -30,7 +30,5 @@ export async function GET() {
     return NextResponse.json({ error: "No submissions yet" }, { status: 404 });
   }
 
-  return NextResponse.json(
-    `Thank you for your interest, ${lastSubmission.name}`
-  );
+  return NextResponse.json(`Thank you, we will reply, ${lastSubmission.name}`);
 }

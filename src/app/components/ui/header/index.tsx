@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Button, Group, Text } from "@mantine/core";
-import { IconMail } from "@tabler/icons-react";
 import styled from "styled-components";
+import ContactButton from "../contactButton/index";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -28,18 +27,6 @@ const StyledHeader = styled.header`
 
     align-content: center;
   }
-
-  .mantine-Button-root {
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: #4680ff;
-    }
-    &:active {
-      background-color: #325bff;
-      transform: translateY(3px);
-    }
-  }
 `;
 
 export function Header() {
@@ -49,14 +36,7 @@ export function Header() {
         <h3>COMPANY LOGO</h3>
       </Link>
       <Link href="/contact">
-        <Button variant="filled" color="indigo" size="compact-md" radius="sm">
-          <Group justify="space-between">
-            <Text fw={300} c={"white"}>
-              Contact us
-            </Text>
-            <IconMail color="white" stroke={1.5} size={18} />
-          </Group>
-        </Button>
+        <ContactButton fw={300} label="Contact Us" isIcon compact />
       </Link>
     </StyledHeader>
   );

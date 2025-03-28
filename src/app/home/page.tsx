@@ -1,32 +1,17 @@
 "use client";
 
-import { Container, Text, Grid, Button, Flex, Group } from "@mantine/core";
+import { Container, Text, Grid, Flex, Group } from "@mantine/core";
 import YouTubeEmbed from "../components/ui/youtube/index";
 import HomeGrid from "../components/ui/homeGrid/index";
 import Link from "next/link";
 import styled from "styled-components";
+import ContactButton from "../components/ui/contactButton";
 
 const MainSection = styled.main`
   padding: 4rem 0;
   display: flex;
   align-items: center;
   flex-direction: column;
-
-  .mantine-Button-root {
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    margin-top: 1rem;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: #4680ff;
-      transform: translateY(-1px);
-    }
-    &:active {
-      background-color: #325bff;
-      transform: translateY(3px);
-    }
-  }
 
   @media screen and (max-width: 600px) {
     padding: 2rem 0;
@@ -82,9 +67,7 @@ export default function HomePage() {
         <HomeGrid />
         <TitleWrapper>
           <Link href="/contact">
-            <Button variant="filled" color="indigo" size="md" radius="xs">
-              <Text c="white">Contact us</Text>
-            </Button>
+            <ContactButton label="Contact Us" />
           </Link>
         </TitleWrapper>
       </Container>
@@ -96,9 +79,7 @@ export default function HomePage() {
         </TitleWrapper>
         <Flex justify="center">
           <Link href="/contact">
-            <Button variant="filled" color="indigo" size="md" radius="xs">
-              <Text c="white">Contact us</Text>
-            </Button>
+            <ContactButton label="Contact Us" />
           </Link>
         </Flex>
       </Container>

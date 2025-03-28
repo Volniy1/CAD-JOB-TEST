@@ -1,8 +1,9 @@
 "use client";
 import { useForm } from "@mantine/form";
-import { Button, Grid, Text, TextInput, Textarea } from "@mantine/core";
+import { Grid, TextInput, Textarea } from "@mantine/core";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ContactButton from "../components/ui/contactButton";
 
 const Wrapper = styled.div`
   max-width: 800px;
@@ -42,22 +43,6 @@ const StyledForm = styled.form`
       color: #000000;
     }
   }
-
-  .mantine-Button-root {
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    margin-top: 1rem;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: #4680ff;
-      transform: translateY(-1px);
-    }
-    &:active {
-      background-color: #325bff;
-      transform: translateY(3px);
-    }
-  }
 `;
 
 const Title = styled.h1`
@@ -65,6 +50,13 @@ const Title = styled.h1`
   margin-bottom: 2rem;
   font-size: 42px;
   letter-spacing: 10px;
+  color: #000000;
+`;
+const SucsessTitle = styled.h3`
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 42px;
+  letter-spacing: 5px;
   color: #000000;
 `;
 
@@ -110,14 +102,10 @@ export default function ContactPage() {
     fetchSubmit();
   };
 
-  useEffect(() => {
-    console.log(Message);
-  }, [Message]);
-
   return (
     <Wrapper>
       {!!Message ? (
-        <Title>{Message}</Title>
+        <SucsessTitle>{Message}</SucsessTitle>
       ) : (
         <>
           <Title>Contact Form</Title>
@@ -155,15 +143,7 @@ export default function ContactPage() {
                 />
               </Grid.Col>
               <Grid.Col span={12} style={{ textAlign: "center" }}>
-                <Button
-                  variant="filled"
-                  type="submit"
-                  color="indigo"
-                  size="md"
-                  radius="xs"
-                >
-                  <Text c="white">Submit</Text>
-                </Button>
+                <ContactButton label="Submit" type="submit" />
               </Grid.Col>
             </Grid>
           </StyledForm>
