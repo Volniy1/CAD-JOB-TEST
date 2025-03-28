@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
 
-let lastSubmission: { name: string; email: string; message: string } | null =
-  null;
-
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -15,21 +12,8 @@ export async function POST(req: Request) {
       );
     }
 
-    lastSubmission = body;
-
-    return NextResponse.json({
-      message: { name, email, message },
-    });
+    return NextResponse.json(`Thank you for your interest, ${name}`)
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 });
   }
-}
-
-export async function GET() {
-  if (!lastSubmission) {
-    return NextResponse.json({ error: "No submissions yet" }, { status: 404 });
-  }
-
-  return NextResponse.json(`Thank you for 
-your interest, ${lastSubmission.name}`);
 }

@@ -1,159 +1,106 @@
-"use client";
-import { useForm } from "@mantine/form";
-import { Grid, TextInput, Textarea } from "@mantine/core";
-import styled from "styled-components";
-import { useState } from "react";
-import ContactButton from "../components/ui/contactButton";
+'use client'
 
-const Wrapper = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-`;
+import { useState } from 'react'
 
-const StyledForm = styled.form`
-  .mantine-TextInput-root,
-  .mantine-Textarea-root {
-    margin-bottom: 1rem;
-    position: relative;
-  }
+import { isEmail, useForm } from '@mantine/form'
+import { Container, Grid, TextInput, Textarea } from '@mantine/core'
 
-  .mantine-TextInput-label,
-  .mantine-Textarea-label {
-    color: #575757;
-    position: absolute;
-    top: 0.5rem;
-    left: 0.75rem;
-    transition: all 0.2s ease;
-    pointer-events: none;
-    padding: 0 0.25rem;
-    z-index: 1;
-    transition: all 0.3s ease;
-  }
+import ContactButton from '@components/contactButton'
+import { motion } from 'framer-motion'
 
-  .dirty {
-    .mantine-TextInput-label,
-    .mantine-Textarea-label {
-      top: -1.5rem;
-      left: 0;
-      color: #000000;
-    }
-  }
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 42px;
-  letter-spacing: 10px;
-  color: #000000;
-`;
-const SucsessTitle = styled.h3`
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 42px;
-  letter-spacing: 5px;
-  color: #000000;
-
-  @media screen and (max-width: 400px) {
-    font-size: 32px;
-    line-height: 32px;
-  }
-`;
+import * as S from './styles'
 
 export default function ContactPage() {
-  const form = useForm({
-    initialValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-    validate: {
-      name: (value) => (value ? null : "Name is required"),
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      message: (value) => (value ? null : "Message is required"),
-    },
-  });
+	const form = useForm({
+		initialValues: {
+			name: '',
+			email: '',
+			message: '',
+		},
+		validate: {
+			name: (value) => (value ? null : 'Name is required'),
+			email: isEmail('Invalid email'),
+			message: (value) => (value ? null : 'Message is required'),
+		},
+	})
 
-  const [Message, setMessage] = useState("");
+	const [Message, setMessage] = useState('')
 
-  const fetchSubmit = async () => {
-    try {
-      const response = await fetch("/api/contact", { method: "GET" });
-      const result = await response.json();
+	const handleSubmit = async (formData: { name: string; email: string; message: string }) => {
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData),
+			})
 
-      setMessage(result);
-    } catch (error) {
-      console.error("Error fetching last submission:", error);
-    }
-  };
-  const handleSubmit = async (formData: {
-    name: string;
-    email: string;
-    message: string;
-  }) => {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+			const result = await response.json()
+			console.log('post:', result)
+			setMessage(result)
+		} catch (error) {
+			console.warn(error)
+		}
+	}
 
-    const result = await response.json();
-    console.log("post:", result);
-    fetchSubmit();
-  };
-
-  return (
-    <Wrapper>
-      {!!Message ? (
-        <SucsessTitle>{Message}</SucsessTitle>
-      ) : (
-        <>
-          <Title>Contact Form</Title>
-          <StyledForm
-            onSubmit={form.onSubmit((values) => handleSubmit(values))}
-          >
-            <Grid gutter="lg">
-              <Grid.Col span={{ base: 12, sm: 6 }}>
-                <TextInput
-                  label="Name"
-                  className={
-                    !form.getInputProps("name").value ? "".trim() : "dirty"
-                  }
-                  {...form.getInputProps("name")}
-                />
-              </Grid.Col>
-              <Grid.Col span={{ base: 12, sm: 6 }}>
-                <TextInput
-                  label="Email Address"
-                  type="email"
-                  className={
-                    !form.getInputProps("email").value ? "".trim() : "dirty"
-                  }
-                  {...form.getInputProps("email")}
-                />
-              </Grid.Col>
-              <Grid.Col span={12}>
-                <Textarea
-                  label="Write your message"
-                  resize="vertical"
-                  className={
-                    !form.getInputProps("message").value ? "".trim() : "dirty"
-                  }
-                  {...form.getInputProps("message")}
-                />
-              </Grid.Col>
-              <Grid.Col span={12} style={{ textAlign: "center" }}>
-                <ContactButton label="Submit" type="submit" />
-              </Grid.Col>
-            </Grid>
-          </StyledForm>
-        </>
-      )}
-    </Wrapper>
-  );
+	return (
+		<S.Wrapper>
+			<motion.div
+				initial={{ backgroundPosition: '0% 0%' }}
+				animate={{ backgroundPosition: '100% 100%' }}
+				transition={{ duration: 15, repeat: Infinity, repeatType: 'mirror' }}
+				style={{
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					width: '100%',
+					height: '100%',
+					backgroundImage: "url('/background/image.jpeg')",
+					backgroundSize: 'cover',
+					backgroundRepeat: 'no-repeat',
+					zIndex: -1,
+				}}
+			/>
+			{!!Message ? (
+				<S.SucsessTitle>{Message}</S.SucsessTitle>
+			) : (
+				<Container>
+					<S.Title>Contact Form</S.Title>
+					<S.StyledForm onSubmit={form.onSubmit((values) => handleSubmit(values))}>
+						<Grid gutter="32">
+							<Grid.Col span={{ base: 12, xs: 6 }}>
+								<TextInput
+									label="Name"
+									size="md"
+									radius="md"
+									className={!form.getInputProps('name').value ? ''.trim() : 'dirty'}
+									{...form.getInputProps('name')}
+								/>
+							</Grid.Col>
+							<Grid.Col span={{ base: 12, xs: 6 }}>
+								<TextInput
+									label="Email Address"
+									size="md"
+									radius="md"
+									type="email"
+									className={!form.getInputProps('email').value ? ''.trim() : 'dirty'}
+									{...form.getInputProps('email')}
+								/>
+							</Grid.Col>
+							<Grid.Col span={12}>
+								<Textarea
+									label="Write your message"
+									size="md"
+									radius="md"
+									resize="vertical"
+									className={!form.getInputProps('message').value ? ''.trim() : 'dirty'}
+									{...form.getInputProps('message')}
+								/>
+							</Grid.Col>
+							<ContactButton label="Submit" type="submit" />
+						</Grid>
+					</S.StyledForm>
+				</Container>
+			)}
+		</S.Wrapper>
+	)
 }

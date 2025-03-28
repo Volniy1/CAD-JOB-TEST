@@ -4,8 +4,13 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
-  env: {
-    MONGODB_URL: process.env.MONGODB_URL,
+  webpack(config, _) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
   },
 };
 

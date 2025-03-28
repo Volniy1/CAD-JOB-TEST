@@ -1,27 +1,27 @@
-"use client";
+'use client'
 
-import styled from "styled-components";
-import { Footer } from "./components/ui/footer";
-import { Header } from "./components/ui/header";
+import styled from 'styled-components'
+
+import { Footer } from '@components/footer'
+import { Header } from '@components/header'
 
 const Wrapper = styled.div`
-  width: 100%;
-  max-width: 1000px;
-  background-color: #ffffff7a;
-`;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+`
+
 const ChildWrapper = styled.div`
-  display: flex;
-  min-height: 90vh;
-  backdrop-filter: blur(10px);
-  padding-inline: 10px;
-`;
+	display: flex;
+	height: 100%;
+`
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  return (
-    <Wrapper>
-      <Header />
-      <ChildWrapper>{children}</ChildWrapper>
-      <Footer />
-    </Wrapper>
-  );
+	return (
+		<Wrapper>
+			<Header />
+			<ChildWrapper>{children}</ChildWrapper>
+			<Footer />
+		</Wrapper>
+	)
 }
