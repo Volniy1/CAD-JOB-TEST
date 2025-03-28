@@ -58,6 +58,11 @@ const SucsessTitle = styled.h3`
   font-size: 42px;
   letter-spacing: 5px;
   color: #000000;
+
+  @media screen and (max-width: 400px) {
+    font-size: 32px;
+    line-height: 32px;
+  }
 `;
 
 export default function ContactPage() {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Roboto, Tilt_Neon } from "next/font/google";
 import { MantineProvider } from "@mantine/core";
+import Providers from "./providers";
 import "@mantine/core/styles.css";
 import "./styles/globals.scss";
-import Providers from "./providers";
 
 const tilt = Tilt_Neon({
   variable: "--font-tilt-neon",

@@ -19,7 +19,7 @@ export default function HomeGrid() {
           <Text size="lg" fw={500}>
             Title
           </Text>
-          <Text size="md" c="dimmed">
+          <Text size="md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             mattis, leo et condimentum
           </Text>
@@ -30,7 +30,7 @@ export default function HomeGrid() {
           <Text size="lg" fw={500}>
             Title
           </Text>
-          <Text size="md" c="dimmed">
+          <Text size="md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             mattis, leo et condimentum
           </Text>
@@ -41,7 +41,7 @@ export default function HomeGrid() {
           <Text size="lg" fw={500}>
             Title
           </Text>
-          <Text size="md" c="dimmed">
+          <Text size="md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             mattis, leo et condimentum
           </Text>
@@ -52,7 +52,7 @@ export default function HomeGrid() {
           <Text size="lg" fw={500}>
             Title
           </Text>
-          <Text size="md" c="dimmed">
+          <Text size="md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             mattis, leo et condimentum
           </Text>
@@ -63,7 +63,7 @@ export default function HomeGrid() {
           <Text size="lg" fw={500}>
             Title
           </Text>
-          <Text size="md" c="dimmed">
+          <Text size="md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             mattis, leo et condimentum
           </Text>
@@ -74,7 +74,7 @@ export default function HomeGrid() {
           <Text size="lg" fw={500}>
             Title
           </Text>
-          <Text size="md" c="dimmed">
+          <Text size="md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             mattis, leo et condimentum
           </Text>

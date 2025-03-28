@@ -45,7 +45,7 @@ export default function HomePage() {
                   Most important <br /> title on the page
                 </h1>
               </Title>
-              <Text size="md" mb="xl" c="dimmed">
+              <Text size="md" mb="xl">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                 mattis, leo et condimentum ultricies, sem urna convallis metus,
                 vel suscipit nibh lacus tincidunt ante
