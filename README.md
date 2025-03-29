@@ -1,18 +1,4 @@
-## Start
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
-##
+# ENG
 
 Next.js + Typescript, styled-components, scss, mantine,tabler, framer-motion
 
@@ -34,4 +20,22 @@ Hello, this is Arthur. I'd like to share my approach to creating this project.
 
 8 - SEO: The project follows best SEO practices by using proper metadata and semantic HTML tags.
 
-9 - YouTube Embeds: I implemented youtube-lite-embed, which I find to be the most customizable solution. I made a few styling adjustments, such as changing the button style and hiding the cover, because surprises are fun!
+9 - YouTube Embeds: I implemented youtube-lite-embed, which I find to be the most customizable solution. I made a few styling adjustments, such as changing the button style and hiding the cover, because... surprises! 🚀🚀🚀🚀
+
+##
+
+# Start
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+##
