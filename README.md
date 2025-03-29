@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 Next.js + Typescript, styled-components, scss, mantine,tabler, framer-motion
 
-Hello, this is Arthur, I will explain for my methods of creating this project.
+Hello, this is Arthur. I'd like to share my approach to creating this project.
 
 1 - Hosting: I'm using Vercel for deployment — it’s the best solution I know for hosting Next.js applications.
 
